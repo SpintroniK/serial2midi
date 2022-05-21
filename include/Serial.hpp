@@ -68,15 +68,13 @@ public:
         ::close(handle);
     }
 
-    void Read()
+    uint8_t ReadByte() const
     {
-        constexpr auto bufferSize = 3U;
-        std::uint8_t buffer[bufferSize]{bufferSize};
+        uint8_t byte{};
 
-        ::read(handle, &buffer, 1);
-
-        std::cout << std::hex << +buffer[0] << std::endl;
+        ::read(handle, &byte, 1);
         
+        return byte;        
     }
 
 private:
