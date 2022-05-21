@@ -20,7 +20,7 @@ class Serial
 
 public:
 
-    Serial(const std::string_view& _port, std::size_t _baudRate)
+    Serial(std::string_view _port, std::size_t _baudRate)
     : port{_port}, baudRate{_baudRate}
     {
         handle = ::open(port.data(), O_RDWR);

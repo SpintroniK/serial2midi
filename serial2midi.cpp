@@ -9,8 +9,10 @@ int main()
 {
 
     Serial serial{"/dev/ttyACM0", 115'200};
+    Midi::VirtualDevice device{"MidiTest"};
 
-    const auto nbBytes = int{10 * 3};
+    const auto nbNotes = 200U;
+    const auto nbBytes = int{nbNotes * 3};
 
     Midi::MessageParser parser;
 
@@ -27,6 +29,8 @@ int main()
                       << "Channel: " << std::hex << +message->channel << ", "
                       << "Param 1: " << std::hex << +message->param1 << ", "
                       << "Param 2: " << std::hex << +message->param2 << std::endl;
+
+            device.EmitMessage(*message);
         }
     }
     return 0; // success
