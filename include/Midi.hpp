@@ -1,5 +1,7 @@
 #pragma once
 
+#include <alsa/asoundlib.h>
+
 #include <array>
 #include <optional>
 #include <queue>
